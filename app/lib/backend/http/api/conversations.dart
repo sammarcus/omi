@@ -1098,6 +1098,7 @@ Future<UploadFilesResult> uploadLocalFilesV2(
   double? audioEndSeconds,
   bool claimLiveCapture = false,
   Geolocation? geolocation,
+  bool explicitUserRequest = false,
 }) async {
   final work = lagWork.begin(LagWork.upload);
   try {
@@ -1112,6 +1113,9 @@ Future<UploadFilesResult> uploadLocalFilesV2(
       if (recordingSessionId != null && recordingSessionId.isNotEmpty) 'recording_session_id': recordingSessionId,
       if (audioStartSeconds != null) 'audio_start_seconds': audioStartSeconds.toString(),
       if (audioEndSeconds != null) 'audio_end_seconds': audioEndSeconds.toString(),
+      // Process now on a held recording: the user asked, so the server's
+      // automatic-recovery lookback does not apply. Older servers ignore it.
+      if (explicitUserRequest) 'explicit_user_request': 'true',
     };
     if (query.isNotEmpty) {
       url += '?${query.entries.map((entry) => '${entry.key}=${Uri.encodeQueryComponent(entry.value)}').join('&')}';

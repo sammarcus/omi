@@ -2535,6 +2535,9 @@ class LocalWalSyncImpl with WidgetsBindingObserver implements LocalWalSync {
         claimLiveCapture: claimLiveCapture,
         geolocation: walToSync.geolocation,
         telemetrySource: _uploadTelemetrySource([walToSync]),
+        // Only a held (Transcribe Later) recording reaches here through the
+        // user's own Process now; it is not automatic recovery.
+        explicitUserRequest: walToSync.holdForUser,
       );
 
       _observeNativeUpload([walToSync]);

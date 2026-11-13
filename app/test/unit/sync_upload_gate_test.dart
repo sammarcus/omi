@@ -78,6 +78,7 @@ void main() {
         audioEndSeconds,
         claimLiveCapture = false,
         geolocation,
+        explicitUserRequest = false,
       }) async =>
           UploadFilesResult.queued('job-after-hold'),
     );
@@ -104,7 +105,8 @@ void main() {
           audioStartSeconds,
           audioEndSeconds,
           claimLiveCapture = false,
-          geolocation}) async {
+          geolocation,
+          explicitUserRequest = false}) async {
         uploads++;
         return UploadFilesResult.queued('job-1');
       },
@@ -132,7 +134,8 @@ void main() {
           audioStartSeconds,
           audioEndSeconds,
           claimLiveCapture = false,
-          geolocation}) async {
+          geolocation,
+          explicitUserRequest = false}) async {
         uploads++;
         return UploadFilesResult.queued('job-after-expiry');
       },
@@ -160,7 +163,8 @@ void main() {
           audioStartSeconds,
           audioEndSeconds,
           claimLiveCapture = false,
-          geolocation}) async {
+          geolocation,
+          explicitUserRequest = false}) async {
         uploads++;
         return UploadFilesResult.queued('unexpected');
       },
@@ -187,7 +191,8 @@ void main() {
           audioStartSeconds,
           audioEndSeconds,
           claimLiveCapture = false,
-          geolocation}) async {
+          geolocation,
+          explicitUserRequest = false}) async {
         uploads++;
         return UploadFilesResult.queued('unexpected');
       },
@@ -221,7 +226,8 @@ void main() {
           audioStartSeconds,
           audioEndSeconds,
           claimLiveCapture = false,
-          geolocation}) async {
+          geolocation,
+          explicitUserRequest = false}) async {
         uploads++;
         return UploadFilesResult.queued('legacy-cleared');
       },
@@ -252,7 +258,8 @@ void main() {
           audioStartSeconds,
           audioEndSeconds,
           claimLiveCapture = false,
-          geolocation}) async {
+          geolocation,
+          explicitUserRequest = false}) async {
         uploads++;
         return UploadFilesResult.queued('unexpected');
       },
@@ -282,7 +289,8 @@ void main() {
           audioStartSeconds,
           audioEndSeconds,
           claimLiveCapture = false,
-          geolocation}) async {
+          geolocation,
+          explicitUserRequest = false}) async {
         capturedSessionId = recordingSessionId;
         capturedStart = audioStartSeconds;
         capturedEnd = audioEndSeconds;
@@ -320,7 +328,8 @@ void main() {
               audioStartSeconds,
               audioEndSeconds,
               claimLiveCapture = false,
-              geolocation}) async =>
+              geolocation,
+              explicitUserRequest = false}) async =>
           UploadFilesResult.queued('job'),
     );
 
@@ -348,7 +357,8 @@ void main() {
               audioStartSeconds,
               audioEndSeconds,
               claimLiveCapture = false,
-              geolocation}) async =>
+              geolocation,
+              explicitUserRequest = false}) async =>
           UploadFilesResult.queued('job'),
     );
 
@@ -369,7 +379,8 @@ void main() {
             audioStartSeconds,
             audioEndSeconds,
             claimLiveCapture = false,
-            geolocation}) async {
+            geolocation,
+            explicitUserRequest = false}) async {
           throw error;
         },
       );
@@ -422,7 +433,8 @@ void main() {
           audioStartSeconds,
           audioEndSeconds,
           claimLiveCapture = false,
-          geolocation}) async {
+          geolocation,
+          explicitUserRequest = false}) async {
         uploads++;
         throw SyncRateLimitedException(kind: SyncRateLimitKind.backendCapacity, retryAfterSeconds: 40 * 24 * 60 * 60);
       },
@@ -457,7 +469,8 @@ void main() {
           audioStartSeconds,
           audioEndSeconds,
           claimLiveCapture = false,
-          geolocation}) async {
+          geolocation,
+          explicitUserRequest = false}) async {
         uploads++;
         throw SyncRateLimitedException(kind: SyncRateLimitKind.fairUse, retryAfterSeconds: 30 * 24 * 60 * 60);
       },
@@ -489,7 +502,8 @@ void main() {
           audioStartSeconds,
           audioEndSeconds,
           claimLiveCapture = false,
-          geolocation}) async {
+          geolocation,
+          explicitUserRequest = false}) async {
         claims.add(claimLiveCapture);
         return UploadFilesResult.queued('job');
       },
@@ -515,7 +529,8 @@ void main() {
           audioStartSeconds,
           audioEndSeconds,
           claimLiveCapture = false,
-          geolocation}) async {
+          geolocation,
+          explicitUserRequest = false}) async {
         now = now.add(const Duration(milliseconds: 1250));
         return UploadFilesResult.queued('job-telemetry');
       },
@@ -555,7 +570,8 @@ void main() {
           audioStartSeconds,
           audioEndSeconds,
           claimLiveCapture = false,
-          geolocation}) async {
+          geolocation,
+          explicitUserRequest = false}) async {
         now = now.add(const Duration(milliseconds: 500));
         throw const SocketException('secret host and path');
       },
@@ -609,7 +625,8 @@ void main() {
               audioStartSeconds,
               audioEndSeconds,
               claimLiveCapture = false,
-              geolocation}) async =>
+              geolocation,
+              explicitUserRequest = false}) async =>
           UploadFilesResult.queued('job-after-telemetry-failure'),
       telemetryEmitter: (_, __) => throw StateError('analytics unavailable'),
     );
@@ -646,7 +663,8 @@ void main() {
           audioStartSeconds,
           audioEndSeconds,
           claimLiveCapture = false,
-          geolocation}) async {
+          geolocation,
+          explicitUserRequest = false}) async {
         uploads++;
         throw const SyncUploadHttpException(503, 'Server is temporarily unavailable', retryAfterSeconds: 30);
       },
@@ -677,7 +695,8 @@ void main() {
               audioStartSeconds,
               audioEndSeconds,
               claimLiveCapture = false,
-              geolocation}) async =>
+              geolocation,
+              explicitUserRequest = false}) async =>
           throw const SyncUploadHttpException(503, 'Server is temporarily unavailable'),
     );
 
@@ -685,4 +704,33 @@ void main() {
 
     expect(limiter.isLimited, isFalse);
   });
+
+  test('an explicit user request reaches the uploader only when asked for', () async {
+    final seen = <bool>[];
+    final gate = SyncUploadGate(
+      limiter: limiter,
+      fairUseStatusLoader: () async => null,
+      uploader: (
+        files, {
+        onUploadProgress,
+        conversationId,
+        captureEvidence,
+        recordingSessionId,
+        audioStartSeconds,
+        audioEndSeconds,
+        claimLiveCapture = false,
+        geolocation,
+        explicitUserRequest = false,
+      }) async {
+        seen.add(explicitUserRequest);
+        return UploadFilesResult.queued('job-${seen.length}');
+      },
+    );
+
+    await gate.upload([]);
+    await gate.upload([], explicitUserRequest: true);
+
+    expect(seen, [false, true]);
+  });
+
 }

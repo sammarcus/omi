@@ -26,6 +26,7 @@ typedef SyncFilesUploader = Future<UploadFilesResult> Function(
   double? audioEndSeconds,
   bool claimLiveCapture,
   Geolocation? geolocation,
+  bool explicitUserRequest,
 });
 typedef FairUseStatusLoader = Future<Map<String, dynamic>?> Function();
 typedef UploadTelemetryEmitter = void Function(String eventName, Map<String, dynamic> properties);
@@ -167,6 +168,7 @@ class SyncUploadGate {
     bool claimLiveCapture = false,
     Geolocation? geolocation,
     String telemetrySource = 'unknown',
+    bool explicitUserRequest = false,
   }) async {
     await _uploadMutex.acquire();
     try {
@@ -224,6 +226,7 @@ class SyncUploadGate {
           audioEndSeconds: audioEndSeconds,
           claimLiveCapture: claimLiveCapture,
           geolocation: geolocation,
+          explicitUserRequest: explicitUserRequest,
         );
         SyncJobPoller.instance.validateOwner(result);
         if (_limiter.reason != RateLimitReason.edgeThrottle) _limiter.clear();

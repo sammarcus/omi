@@ -936,6 +936,8 @@ class _AutoSyncPageState extends State<AutoSyncPage> {
         return (Colors.grey.shade400, FontAwesomeIcons.cloud, context.l10n.syncStatusUploaded);
       case WalSyncDisplayState.waiting:
         return (Colors.grey.shade500, FontAwesomeIcons.cloudArrowUp, context.l10n.syncStatusWaiting);
+      case WalSyncDisplayState.held:
+        return (Colors.grey.shade500, FontAwesomeIcons.clock, context.l10n.syncStatusHeld);
       case WalSyncDisplayState.retrying:
         return (Colors.orangeAccent, FontAwesomeIcons.arrowsRotate, context.l10n.syncStatusRetrying);
       case WalSyncDisplayState.failed:

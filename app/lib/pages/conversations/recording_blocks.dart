@@ -65,6 +65,7 @@ class _AudioInterval {
 int _rank(WalSyncDisplayState state) => switch (state) {
       WalSyncDisplayState.synced => 0,
       WalSyncDisplayState.uploaded => 1,
+      WalSyncDisplayState.held => 2,
       WalSyncDisplayState.waiting => 2,
       WalSyncDisplayState.syncing => 3,
       WalSyncDisplayState.retrying => 4,

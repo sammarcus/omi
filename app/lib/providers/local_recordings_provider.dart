@@ -13,6 +13,28 @@ import 'package:omi/utils/waveform_utils.dart';
 
 enum LocalUploadOutcome { started, fairUseLimited, backendBusy, failed, busy }
 
+/// Mirrors the backend's default automatic-recovery lookback
+/// (`SYNC_BACKFILL_MAX_AGE_SECONDS`, `backend/utils/sync/lanes.py`). Used only to
+/// warn before held audio ages out; the server stays the authority.
+const int heldRecordingServerLookbackSeconds = 30 * 24 * 60 * 60;
+
+/// How long before [heldRecordingServerLookbackSeconds] a held recording is
+/// called out as expiring.
+const int heldRecordingExpiryWarningSeconds = 7 * 24 * 60 * 60;
+
+/// Held recordings that will pass the server lookback within the warning
+/// window but have not passed it yet.
+int heldRecordingsNearLookback(Iterable<LocalRecording> recordings, {required int nowSeconds}) {
+  final warnAfter = heldRecordingServerLookbackSeconds - heldRecordingExpiryWarningSeconds;
+  var count = 0;
+  for (final r in recordings) {
+    if (r.timerStart <= 0) continue;
+    final age = nowSeconds - r.timerStart;
+    if (age >= warnAfter && age < heldRecordingServerLookbackSeconds) count++;
+  }
+  return count;
+}
+
 /// Home's view of explicit Transcribe Later custody. No queue, scanner or uploader.
 class LocalRecordingsProvider extends ChangeNotifier {
   LocalRecordingsProvider(

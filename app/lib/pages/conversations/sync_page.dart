@@ -83,6 +83,8 @@ class WalListItem extends StatelessWidget {
       case WalSyncDisplayState.uploadRejected:
         // Which refusal it was, in On the Way's words.
         return (Colors.grey.shade500, walAttentionLabel(state, l, rejectionReason: wal.uploadRejectionReason));
+      case WalSyncDisplayState.held:
+        return (Colors.grey.shade500, l.syncStatusHeld);
       case WalSyncDisplayState.waiting:
       case WalSyncDisplayState.syncing:
         return (Colors.grey.shade500, l.syncStatusWaiting);

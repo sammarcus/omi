@@ -91,6 +91,9 @@ class WalUploadRejection {
 /// - [uploaded]   — uploaded; processing on Omi's servers (will finish in the background)
 /// - [synced]     — safely backed up to the cloud
 /// - [waiting]    — recorded, never attempted yet (will sync automatically)
+/// - [held]       — Transcribe Later: kept on the phone until the user taps
+///                  Process now; the automatic uploader never takes it, so it
+///                  must not read as queued work or count toward pending totals
 /// - [retrying]   — a sync attempt failed; will be retried automatically
 /// - [failed]     — auto-retries exhausted; needs a manual retry
 /// - [corrupted]  — the underlying file is missing/unreadable
@@ -105,6 +108,7 @@ enum WalSyncDisplayState {
   uploaded,
   synced,
   waiting,
+  held,
   retrying,
   failed,
   corrupted,
@@ -175,6 +179,7 @@ int _syncOutcomeRank(WalSyncDisplayState state) => switch (state) {
       WalSyncDisplayState.uploaded => 1,
       WalSyncDisplayState.synced => 1,
       WalSyncDisplayState.waiting => 1,
+      WalSyncDisplayState.held => 1,
     };
 
 /// Max automatic sync attempts before a recording is considered
@@ -763,11 +768,14 @@ class Wal {
       case WalStatus.uploadRejected:
         return WalSyncDisplayState.uploadRejected;
       case WalStatus.miss:
+        // A held recording only moves on an explicit Process now, so neither
+        // queued nor auto-retry wording is true for it.
+        if (holdForUser) return WalSyncDisplayState.held;
         if (retryCount >= walMaxAutoRetries) return WalSyncDisplayState.failed;
         if (retryCount > 0) return WalSyncDisplayState.retrying;
         return WalSyncDisplayState.waiting;
       case WalStatus.inProgress:
-        return WalSyncDisplayState.waiting;
+        return holdForUser ? WalSyncDisplayState.held : WalSyncDisplayState.waiting;
     }
   }
 

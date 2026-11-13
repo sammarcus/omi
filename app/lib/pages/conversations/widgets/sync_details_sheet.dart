@@ -53,6 +53,9 @@ class SyncDetailsSheet extends StatelessWidget {
       (l.syncDetailsYourOmi, device.isConnected ? l.connected : l.disconnected),
       (l.syncDetailsWaitingOnOmi, onDevice),
       (l.syncDetailsWaitingOnPhone, dur(amounts.onPhoneSeconds)),
+      // Transcribe Later audio moves only on Process now; shown apart so the
+      // waiting total above never counts audio that will not upload by itself.
+      if (amounts.heldSeconds > 0) (l.syncDetailsHeldOnPhone, dur(amounts.heldSeconds)),
       (l.syncDetailsTranscribing, dur(amounts.processingSeconds)),
     ];
     final forSupport = <(String, String)>[

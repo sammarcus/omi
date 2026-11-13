@@ -22,17 +22,14 @@ const int heldRecordingServerLookbackSeconds = 30 * 24 * 60 * 60;
 /// called out as expiring.
 const int heldRecordingExpiryWarningSeconds = 7 * 24 * 60 * 60;
 
-/// Held recordings that will pass the server lookback within the warning
-/// window but have not passed it yet.
-int heldRecordingsNearLookback(Iterable<LocalRecording> recordings, {required int nowSeconds}) {
-  final warnAfter = heldRecordingServerLookbackSeconds - heldRecordingExpiryWarningSeconds;
-  var count = 0;
-  for (final r in recordings) {
-    if (r.timerStart <= 0) continue;
-    final age = nowSeconds - r.timerStart;
-    if (age >= warnAfter && age < heldRecordingServerLookbackSeconds) count++;
-  }
-  return count;
+/// When the server's automatic-recovery lookback will refuse this held
+/// recording, if that falls inside the warning window; null otherwise.
+DateTime? heldRecordingLookbackDeadline(LocalRecording recording, {required int nowSeconds}) {
+  if (recording.timerStart <= 0) return null;
+  final deadline = recording.timerStart + heldRecordingServerLookbackSeconds;
+  final left = deadline - nowSeconds;
+  if (left <= 0 || left > heldRecordingExpiryWarningSeconds) return null;
+  return DateTime.fromMillisecondsSinceEpoch(deadline * 1000);
 }
 
 /// Home's view of explicit Transcribe Later custody. No queue, scanner or uploader.

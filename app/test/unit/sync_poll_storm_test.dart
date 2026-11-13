@@ -365,7 +365,8 @@ void main() {
             audioStartSeconds,
             audioEndSeconds,
             claimLiveCapture = false,
-            geolocation}) async {
+            geolocation,
+            explicitUserRequest = false}) async {
           uploads++;
           expect(files.length, 2, reason: 'only the retained orphan files need re-upload');
           for (final file in files) {
@@ -632,7 +633,8 @@ void main() {
             audioStartSeconds,
             audioEndSeconds,
             claimLiveCapture = false,
-            geolocation}) async {
+            geolocation,
+            explicitUserRequest = false}) async {
           uploads++;
           throw SyncRateLimitedException(
               kind: SyncRateLimitKind.edgeThrottle, retryAfterSeconds: 60, reasonCode: 'sync_content_in_progress');
@@ -667,7 +669,8 @@ void main() {
                 audioStartSeconds,
                 audioEndSeconds,
                 claimLiveCapture = false,
-                geolocation}) async =>
+                geolocation,
+                explicitUserRequest = false}) async =>
             syncContentInProgressResult(http.Response('{"code":"sync_content_in_progress","job_id":"job-1"}', 409))!);
     final sync = LocalWalSyncImpl(_Listener(),
         jobPoller: poller,
@@ -705,7 +708,8 @@ void main() {
             audioStartSeconds,
             audioEndSeconds,
             claimLiveCapture = false,
-            geolocation}) async {
+            geolocation,
+            explicitUserRequest = false}) async {
           uploads++;
           expect(files.single.existsSync(), isTrue);
           return UploadFilesResult.queued('replacement');
@@ -797,7 +801,8 @@ void main() {
             audioStartSeconds,
             audioEndSeconds,
             claimLiveCapture = false,
-            geolocation}) async {
+            geolocation,
+            explicitUserRequest = false}) async {
           uploads++;
           return syncContentInProgressResult(http.Response(
               '{"code":"sync_content_in_progress","job_id":"active-owner","poll_after_ms":120000}', 409))!;

@@ -106,6 +106,7 @@ void main() {
                 audioEndSeconds,
                 claimLiveCapture = false,
                 geolocation,
+                explicitUserRequest = false,
               }) async {
                 uploads++;
                 if (!accept) throw StateError('synthetic refused upload');
@@ -1324,6 +1325,7 @@ void main() {
             audioEndSeconds,
             claimLiveCapture = false,
             geolocation,
+            explicitUserRequest = false,
           }) async {
             uploads++;
             expect(await files.single.readAsBytes(), original);
@@ -1600,6 +1602,7 @@ void main() {
             audioEndSeconds,
             claimLiveCapture = false,
             geolocation,
+            explicitUserRequest = false,
           }) async {
             attempted?.add(files.map((f) => f.path.split(Platform.pathSeparator).last).toList());
             return outcome?.call() ??
@@ -2873,6 +2876,7 @@ void main() {
               audioEndSeconds,
               claimLiveCapture = false,
               geolocation,
+              explicitUserRequest = false,
             }) async {
               uploads.add((files.map((file) => file.uri.pathSegments.last).toList(), captureEvidence));
               return UploadFilesResult.queued('job-${uploads.length}');
@@ -3100,6 +3104,7 @@ void main() {
             audioEndSeconds,
             claimLiveCapture = false,
             geolocation,
+            explicitUserRequest = false,
           }) async {
             uploads.add((files.map((file) => file.uri.pathSegments.last).toList(), captureEvidence));
             return UploadFilesResult.queued('job-${uploads.length}');
@@ -3165,6 +3170,7 @@ void main() {
             audioEndSeconds,
             claimLiveCapture = false,
             geolocation,
+            explicitUserRequest = false,
           }) async {
             return UploadFilesResult.queued('job-1');
           },
@@ -3219,6 +3225,7 @@ void main() {
             audioEndSeconds,
             claimLiveCapture = false,
             geolocation,
+            explicitUserRequest = false,
           }) async {
             return UploadFilesResult.queued('job-1');
           },
@@ -3262,6 +3269,7 @@ void main() {
               audioEndSeconds,
               claimLiveCapture = false,
               geolocation,
+              explicitUserRequest = false,
             }) async {
               return UploadFilesResult.queued('job-1');
             },
@@ -3378,6 +3386,7 @@ void main() {
             audioEndSeconds,
             claimLiveCapture = false,
             geolocation,
+            explicitUserRequest = false,
           }) async {
             return UploadFilesResult.queued('job-1');
           },
@@ -3421,6 +3430,7 @@ void main() {
             audioEndSeconds,
             claimLiveCapture = false,
             geolocation,
+            explicitUserRequest = false,
           }) async {
             bounds.add((
               files.map((file) => file.uri.pathSegments.last).toList(),
@@ -3489,6 +3499,7 @@ void main() {
             audioEndSeconds,
             claimLiveCapture = false,
             geolocation,
+            explicitUserRequest = false,
           }) async {
             bounds.add((
               files.map((file) => file.uri.pathSegments.last).toList(),
@@ -3530,6 +3541,7 @@ void main() {
             audioEndSeconds,
             claimLiveCapture = false,
             geolocation,
+            explicitUserRequest = false,
           }) async {
             uploaded.add((files.map((file) => file.uri.pathSegments.last).toList(), captureEvidence));
             return UploadFilesResult.queued('job-1');
@@ -3618,6 +3630,7 @@ void main() {
               audioEndSeconds,
               claimLiveCapture = false,
               geolocation,
+              explicitUserRequest = false,
             }) async {
               bounds.add((
                 files.map((file) => file.uri.pathSegments.last).toList(),

@@ -63,7 +63,8 @@ void main() {
                 audioStartSeconds,
                 audioEndSeconds,
                 claimLiveCapture = false,
-                geolocation}) async =>
+                geolocation,
+                explicitUserRequest = false}) async =>
             throw StateError('no uploads in view test'));
     final p = SyncProvider(walService: _Service(_Syncs(rows)), uploadGate: gate, startBackgroundSync: false);
     addTearDown(p.dispose);

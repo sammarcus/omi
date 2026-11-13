@@ -302,7 +302,8 @@ class _RecordingDetailSheetState extends State<_RecordingDetailSheet> {
         unawaited(AppReviewService().recordBadExperience(AppReviewBadExperience.captureFailure));
         OmiFeedback.error(context, context.l10n.anErrorOccurredTryAgain);
       case LocalUploadOutcome.busy:
-        break;
+        // Already moving, or briefly throttled: say so instead of a silent tap.
+        OmiFeedback.info(context, context.l10n.recordingAlreadyProcessing);
       case LocalUploadOutcome.started:
         Navigator.of(context).maybePop();
     }

@@ -103,7 +103,8 @@ void main() {
           audioStartSeconds,
           audioEndSeconds,
           claimLiveCapture = false,
-          geolocation}) async {
+          geolocation,
+          explicitUserRequest = false}) async {
         uploads.add([for (final file in files) file.uri.pathSegments.last]);
         if (uploadFailure != null) throw uploadFailure!;
         return UploadFilesResult.queued('job-${uploads.length}');

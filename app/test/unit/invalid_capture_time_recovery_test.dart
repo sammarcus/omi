@@ -129,7 +129,8 @@ void main() {
             audioStartSeconds,
             audioEndSeconds,
             claimLiveCapture = false,
-            geolocation}) async {
+            geolocation,
+            explicitUserRequest = false}) async {
           final names = files.map((file) => file.uri.pathSegments.last).toList();
           uploadAttempts.add(names);
           if (refuseWith != null) throw refuseWith!;

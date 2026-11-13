@@ -54,7 +54,8 @@ void main() {
             audioStartSeconds,
             audioEndSeconds,
             claimLiveCapture = false,
-            geolocation}) async {
+            geolocation,
+            explicitUserRequest = false}) async {
           uploaded = geolocation;
           return UploadFilesResult.queued('job-1');
         },

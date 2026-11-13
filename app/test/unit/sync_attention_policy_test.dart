@@ -72,7 +72,8 @@ void main() {
             audioStartSeconds,
             audioEndSeconds,
             claimLiveCapture = false,
-            geolocation}) async {
+            geolocation,
+            explicitUserRequest = false}) async {
           calls++;
           if (success) return UploadFilesResult.queued('fixed');
           throw const SyncUploadHttpException(400, 'arbitrary prose', reasonCode: 'invalid_file');
@@ -130,7 +131,8 @@ void main() {
                       audioStartSeconds,
                       audioEndSeconds,
                       claimLiveCapture = false,
-                      geolocation}) async =>
+                      geolocation,
+                      explicitUserRequest = false}) async =>
                   throw const SyncUploadHttpException(400, 'refused')));
       sync.testWals = [wal];
       await sync.syncAll();
@@ -190,7 +192,8 @@ void main() {
             audioStartSeconds,
             audioEndSeconds,
             claimLiveCapture = false,
-            geolocation}) async {
+            geolocation,
+            explicitUserRequest = false}) async {
           calls++;
           throw const SyncUploadHttpException(400, 'still refused', reasonCode: 'invalid_file');
         });

@@ -447,7 +447,8 @@ void main() {
           audioStartSeconds,
           audioEndSeconds,
           claimLiveCapture = false,
-          geolocation}) async {
+          geolocation,
+          explicitUserRequest = false}) async {
         now = now.add(const Duration(milliseconds: 80));
         return UploadFilesResult.queued('job-202');
       },
@@ -487,7 +488,8 @@ void main() {
           audioStartSeconds,
           audioEndSeconds,
           claimLiveCapture = false,
-          geolocation}) async {
+          geolocation,
+          explicitUserRequest = false}) async {
         now = now.add(const Duration(milliseconds: 30));
         throw SyncRateLimitedException(
             kind: SyncRateLimitKind.backendCapacity,

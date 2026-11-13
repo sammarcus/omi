@@ -65,7 +65,8 @@ void main() {
             audioStartSeconds,
             audioEndSeconds,
             claimLiveCapture = false,
-            geolocation}) async {
+            geolocation,
+            explicitUserRequest = false}) async {
           if (rateLimitAtBatch > 0 && uploadedConversations.length >= rateLimitAtBatch) {
             throw SyncRateLimitedException(kind: SyncRateLimitKind.backendCapacity, retryAfterSeconds: 60);
           }

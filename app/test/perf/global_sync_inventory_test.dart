@@ -95,7 +95,8 @@ SyncUploadGate _gate() => SyncUploadGate(
               audioStartSeconds,
               audioEndSeconds,
               claimLiveCapture = false,
-              geolocation}) async =>
+              geolocation,
+              explicitUserRequest = false}) async =>
           UploadFilesResult.queued('unused'),
     );
 

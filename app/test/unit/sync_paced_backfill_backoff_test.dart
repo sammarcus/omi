@@ -196,6 +196,7 @@ void main() {
               audioEndSeconds,
               claimLiveCapture = false,
               geolocation,
+              explicitUserRequest = false,
             }) async {
               uploads++;
               throw SyncRateLimitedException(
@@ -256,6 +257,7 @@ void main() {
             audioEndSeconds,
             claimLiveCapture = false,
             geolocation,
+            explicitUserRequest = false,
           }) async {
             throw SyncRateLimitedException(
               kind: reasonCode == 'fair_use' ? SyncRateLimitKind.fairUse : SyncRateLimitKind.backendCapacity,
@@ -292,6 +294,7 @@ void main() {
           audioEndSeconds,
           claimLiveCapture = false,
           geolocation,
+          explicitUserRequest = false,
         }) async {
           throw const SyncUploadHttpException(503, 'server');
         },
@@ -364,6 +367,7 @@ void main() {
               audioEndSeconds,
               claimLiveCapture = false,
               geolocation,
+              explicitUserRequest = false,
             }) async {
               throw SyncRateLimitedException(
                 kind: SyncRateLimitKind.backendCapacity,
@@ -423,6 +427,7 @@ void main() {
               audioEndSeconds,
               claimLiveCapture = false,
               geolocation,
+              explicitUserRequest = false,
             }) async {
               throw StateError('a finalization 503 must not re-upload');
             },
@@ -482,6 +487,7 @@ void main() {
               audioEndSeconds,
               claimLiveCapture = false,
               geolocation,
+              explicitUserRequest = false,
             }) async {
               throw const SyncUploadHttpException(500, 'server');
             },

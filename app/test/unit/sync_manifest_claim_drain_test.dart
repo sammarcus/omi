@@ -60,7 +60,8 @@ void main() {
             audioStartSeconds,
             audioEndSeconds,
             claimLiveCapture = false,
-            geolocation}) async {
+            geolocation,
+            explicitUserRequest = false}) async {
           claims.add(claimLiveCapture);
           batchFileCounts.add(files.length);
           return UploadFilesResult.queued('job-${claims.length}');

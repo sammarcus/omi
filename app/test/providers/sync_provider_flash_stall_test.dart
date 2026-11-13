@@ -53,7 +53,8 @@ SyncUploadGate _hermeticGate() {
             audioStartSeconds,
             audioEndSeconds,
             claimLiveCapture = false,
-            geolocation}) async =>
+            geolocation,
+            explicitUserRequest = false}) async =>
         UploadFilesResult.queued('unused'),
   );
 }

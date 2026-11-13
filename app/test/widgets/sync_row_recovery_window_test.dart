@@ -77,7 +77,8 @@ SyncUploadGate _offlineGate() => SyncUploadGate(
           audioStartSeconds,
           audioEndSeconds,
           claimLiveCapture = false,
-          geolocation}) async {
+          geolocation,
+          explicitUserRequest = false}) async {
         throw StateError('unexpected upload in a widget test');
       },
       fairUseStatusLoader: () async => {'stage': 'none'},

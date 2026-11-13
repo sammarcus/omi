@@ -81,7 +81,8 @@ SyncUploadGate _offlineGate() {
         audioStartSeconds,
         audioEndSeconds,
         claimLiveCapture = false,
-        geolocation}) async {
+        geolocation,
+        explicitUserRequest = false}) async {
       throw StateError('unexpected upload in terminal WAL-state test');
     },
     fairUseStatusLoader: () async => {'stage': 'none'},

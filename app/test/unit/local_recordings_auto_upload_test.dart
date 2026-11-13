@@ -108,7 +108,8 @@ void main() {
             audioStartSeconds,
             audioEndSeconds,
             claimLiveCapture = false,
-            geolocation}) async {
+            geolocation,
+            explicitUserRequest = false}) async {
           uploads++;
           return UploadFilesResult.queued('job');
         });
@@ -143,7 +144,8 @@ void main() {
                 audioStartSeconds,
                 audioEndSeconds,
                 claimLiveCapture = false,
-                geolocation}) async =>
+                geolocation,
+                explicitUserRequest = false}) async =>
             throw StateError('offline'));
     final ledger = await custodyLedger(gate: gate);
     await NativeRecordingIntake(ledger).scan();

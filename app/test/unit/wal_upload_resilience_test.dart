@@ -104,7 +104,8 @@ void main() {
             audioStartSeconds,
             audioEndSeconds,
             claimLiveCapture = false,
-            geolocation}) async {
+            geolocation,
+            explicitUserRequest = false}) async {
           uploadAttempts.add(files.map((file) => file.uri.pathSegments.last).toList());
           liveClaims.add(claimLiveCapture);
           if (uploadResponse != null) return uploadResponse!(files);
@@ -724,7 +725,8 @@ void main() {
               audioStartSeconds,
               audioEndSeconds,
               claimLiveCapture = false,
-              geolocation}) async {
+              geolocation,
+              explicitUserRequest = false}) async {
             uploads++;
             return UploadFilesResult.done(
               SyncLocalFilesResponse(newConversationIds: const [], updatedConversationIds: const ['recovered']),
@@ -774,7 +776,8 @@ void main() {
               audioStartSeconds,
               audioEndSeconds,
               claimLiveCapture = false,
-              geolocation}) async {
+              geolocation,
+              explicitUserRequest = false}) async {
             uploads++;
             uploadedConversationId = conversationId;
             claimedLiveCapture = claimLiveCapture;
@@ -820,7 +823,8 @@ void main() {
               audioStartSeconds,
               audioEndSeconds,
               claimLiveCapture = false,
-              geolocation}) async {
+              geolocation,
+              explicitUserRequest = false}) async {
             attempts.add(files.map((file) => file.uri.pathSegments.last).toList());
             throw failure();
           },

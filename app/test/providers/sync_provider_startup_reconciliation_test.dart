@@ -33,7 +33,8 @@ void main() {
               audioStartSeconds,
               audioEndSeconds,
               claimLiveCapture = false,
-              geolocation}) async =>
+              geolocation,
+              explicitUserRequest = false}) async =>
           UploadFilesResult.queued('unused'),
     );
     final provider = SyncProvider(walService: WalService(), uploadGate: gate, startBackgroundSync: false);
@@ -62,7 +63,8 @@ void main() {
               audioStartSeconds,
               audioEndSeconds,
               claimLiveCapture = false,
-              geolocation}) async =>
+              geolocation,
+              explicitUserRequest = false}) async =>
           UploadFilesResult.queued('unused'),
     );
     var startupWakes = 0;

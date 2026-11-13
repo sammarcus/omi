@@ -193,7 +193,8 @@ void main() {
               audioStartSeconds,
               audioEndSeconds,
               claimLiveCapture = false,
-              geolocation}) async =>
+              geolocation,
+              explicitUserRequest = false}) async =>
           throw StateError('auto-upload is disabled'),
     );
   });

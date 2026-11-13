@@ -37,7 +37,8 @@ void main() {
                 audioStartSeconds,
                 audioEndSeconds,
                 claimLiveCapture = false,
-                geolocation}) async =>
+                geolocation,
+                explicitUserRequest = false}) async =>
             UploadFilesResult.queued('manual-job'));
     final ledger = await custodyLedger(
         gate: gate,

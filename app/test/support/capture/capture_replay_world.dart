@@ -231,6 +231,7 @@ class ScriptedUploads {
         audioEndSeconds,
         claimLiveCapture = false,
         geolocation,
+        explicitUserRequest = false,
       }) async {
         onUploadFiles?.call(files);
         attempts.add(

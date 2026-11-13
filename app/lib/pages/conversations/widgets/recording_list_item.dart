@@ -30,6 +30,15 @@ class RecordingListItem extends StatelessWidget {
       case LocalRecordingState.failed:
         return (OmiColors.danger, l.failedStatus);
       case LocalRecordingState.pending:
+        // Held audio never uploads on its own; say so before the server's
+        // lookback turns a later Process now into a refusal.
+        final deadline = heldRecordingLookbackDeadline(
+          recording,
+          nowSeconds: DateTime.now().millisecondsSinceEpoch ~/ 1000,
+        );
+        if (deadline != null) {
+          return (OmiColors.warning, l.heldRecordingProcessBefore(OmiDateFormat.of(context).date(deadline)));
+        }
         return (OmiColors.textTertiary, l.privateAndSecureOnDevice);
     }
   }

@@ -60,14 +60,18 @@ class SyncPipelineAmounts {
     required this.onDeviceBytes,
     required this.onPhoneSeconds,
     required this.processingSeconds,
+    this.heldSeconds = 0,
   });
 
   factory SyncPipelineAmounts.of(Iterable<Wal> wals) {
-    var onDeviceSeconds = 0, onDeviceBytes = 0, onPhoneSeconds = 0, processingSeconds = 0;
+    var onDeviceSeconds = 0, onDeviceBytes = 0, onPhoneSeconds = 0, processingSeconds = 0, heldSeconds = 0;
     for (final w in wals) {
       final seconds = w.seconds > 0 ? w.seconds : 0;
       if (w.status == WalStatus.uploaded) {
         processingSeconds += seconds;
+      } else if (w.syncDisplayState == WalSyncDisplayState.held) {
+        // Transcribe Later audio waits for the user, not for the uploader.
+        heldSeconds += seconds;
       } else if (w.status == WalStatus.miss && walIsSyncable(w)) {
         if (walIsOnDevice(w)) {
           onDeviceSeconds += seconds;
@@ -83,6 +87,7 @@ class SyncPipelineAmounts {
       onDeviceBytes: onDeviceBytes,
       onPhoneSeconds: onPhoneSeconds,
       processingSeconds: processingSeconds,
+      heldSeconds: heldSeconds,
     );
   }
 
@@ -90,6 +95,10 @@ class SyncPipelineAmounts {
   final int onDeviceBytes;
   final int onPhoneSeconds;
   final int processingSeconds;
+
+  /// Transcribe Later audio on the phone. Only Process now moves it, so it is
+  /// reported apart from [onPhoneSeconds] instead of reading as queued.
+  final int heldSeconds;
 }
 
 /// The three steps of a sync, in order. The status card draws one bar segment

@@ -27062,6 +27062,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Confirming installation… This may take up to 3 minutes.'**
   String get firmwareVerifyingInstallation;
+
+  /// Sync row status: a Transcribe Later recording kept on the phone until the user taps Process now; it never uploads on its own.
+  ///
+  /// In en, this message translates to:
+  /// **'Held for Transcribe Later'**
+  String get syncStatusHeld;
+
+  /// Sync details row label: Transcribe Later audio on the phone that only uploads when the user taps Process now.
+  ///
+  /// In en, this message translates to:
+  /// **'Held for you on this phone'**
+  String get syncDetailsHeldOnPhone;
+
+  /// Toast when Process now is tapped while the recording is already uploading or uploads are briefly throttled.
+  ///
+  /// In en, this message translates to:
+  /// **'Already processing. Try again in a moment.'**
+  String get recordingAlreadyProcessing;
+
+  /// Home row status for a held Transcribe Later recording within a week of the server's 30-day automatic-recovery limit. date is a formatted calendar date.
+  ///
+  /// In en, this message translates to:
+  /// **'Process before {date}'**
+  String heldRecordingProcessBefore(String date);
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

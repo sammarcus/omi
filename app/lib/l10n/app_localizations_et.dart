@@ -15414,4 +15414,18 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String get firmwareVerifyingInstallation => 'Confirming installation… This may take up to 3 minutes.';
+
+  @override
+  String get syncStatusHeld => 'Hoitud hilisemaks transkribeerimiseks';
+
+  @override
+  String get syncDetailsHeldOnPhone => 'Sulle selles telefonis hoitud';
+
+  @override
+  String get recordingAlreadyProcessing => 'Juba töödeldakse. Proovi hetke pärast uuesti.';
+
+  @override
+  String heldRecordingProcessBefore(String date) {
+    return 'Töötle enne $date';
+  }
 }

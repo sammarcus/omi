@@ -15194,4 +15194,18 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get firmwareVerifyingInstallation => 'Confirming installation… This may take up to 3 minutes.';
+
+  @override
+  String get syncStatusHeld => 'あとで文字起こし用に保留中';
+
+  @override
+  String get syncDetailsHeldOnPhone => 'このスマートフォンに保留中';
+
+  @override
+  String get recordingAlreadyProcessing => 'すでに処理中です。しばらくしてからもう一度お試しください。';
+
+  @override
+  String heldRecordingProcessBefore(String date) {
+    return '$dateまでに処理してください';
+  }
 }

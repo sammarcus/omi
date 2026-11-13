@@ -4645,5 +4645,9 @@
     "firmwareUpdateNotInstalledMessage": "The update didn't install. Your pendant is still on {version}. Please try again.",
     "firmwareUpdateUnconfirmedMessage": "Couldn't confirm the update. Your pendant hasn't reconnected yet. Keep it nearby and check its firmware version before trying again.",
     "firmwareUpdateUnconfirmedTitle": "Update Not Confirmed",
-    "firmwareVerifyingInstallation": "Confirming installation… This may take up to 3 minutes."
+    "firmwareVerifyingInstallation": "Confirming installation… This may take up to 3 minutes.",
+    "syncStatusHeld": "나중에 전사하기로 보류됨",
+    "syncDetailsHeldOnPhone": "이 휴대폰에 보류됨",
+    "recordingAlreadyProcessing": "이미 처리 중입니다. 잠시 후 다시 시도하세요.",
+    "heldRecordingProcessBefore": "{date} 전에 처리하세요"
 }

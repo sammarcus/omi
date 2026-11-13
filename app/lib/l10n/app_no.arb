@@ -4645,5 +4645,9 @@
     "firmwareUpdateNotInstalledMessage": "The update didn't install. Your pendant is still on {version}. Please try again.",
     "firmwareUpdateUnconfirmedMessage": "Couldn't confirm the update. Your pendant hasn't reconnected yet. Keep it nearby and check its firmware version before trying again.",
     "firmwareUpdateUnconfirmedTitle": "Update Not Confirmed",
-    "firmwareVerifyingInstallation": "Confirming installation… This may take up to 3 minutes."
+    "firmwareVerifyingInstallation": "Confirming installation… This may take up to 3 minutes.",
+    "syncStatusHeld": "Holdt tilbake for senere transkribering",
+    "syncDetailsHeldOnPhone": "Holdt tilbake for deg på denne telefonen",
+    "recordingAlreadyProcessing": "Behandles allerede. Prøv igjen om et øyeblikk.",
+    "heldRecordingProcessBefore": "Behandle før {date}"
 }

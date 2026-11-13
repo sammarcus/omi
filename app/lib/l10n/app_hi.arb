@@ -4645,5 +4645,9 @@
     "firmwareUpdateNotInstalledMessage": "The update didn't install. Your pendant is still on {version}. Please try again.",
     "firmwareUpdateUnconfirmedMessage": "Couldn't confirm the update. Your pendant hasn't reconnected yet. Keep it nearby and check its firmware version before trying again.",
     "firmwareUpdateUnconfirmedTitle": "Update Not Confirmed",
-    "firmwareVerifyingInstallation": "Confirming installation… This may take up to 3 minutes."
+    "firmwareVerifyingInstallation": "Confirming installation… This may take up to 3 minutes.",
+    "syncStatusHeld": "बाद में ट्रांसक्राइब के लिए रोका गया",
+    "syncDetailsHeldOnPhone": "इस फ़ोन पर आपके लिए रोका गया",
+    "recordingAlreadyProcessing": "पहले से प्रोसेस हो रहा है। थोड़ी देर में फिर कोशिश करें।",
+    "heldRecordingProcessBefore": "{date} से पहले प्रोसेस करें"
 }

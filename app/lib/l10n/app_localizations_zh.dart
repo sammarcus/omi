@@ -15171,4 +15171,18 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get firmwareVerifyingInstallation => 'Confirming installation… This may take up to 3 minutes.';
+
+  @override
+  String get syncStatusHeld => '已保留，稍后转录';
+
+  @override
+  String get syncDetailsHeldOnPhone => '在此手机上为你保留';
+
+  @override
+  String get recordingAlreadyProcessing => '正在处理中，请稍后再试。';
+
+  @override
+  String heldRecordingProcessBefore(String date) {
+    return '请在 $date 前处理';
+  }
 }

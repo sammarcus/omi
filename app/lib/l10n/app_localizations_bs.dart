@@ -15450,4 +15450,18 @@ class AppLocalizationsBs extends AppLocalizations {
 
   @override
   String get firmwareVerifyingInstallation => 'Confirming installation… This may take up to 3 minutes.';
+
+  @override
+  String get syncStatusHeld => 'Zadržano za kasniju transkripciju';
+
+  @override
+  String get syncDetailsHeldOnPhone => 'Zadržano za vas na ovom telefonu';
+
+  @override
+  String get recordingAlreadyProcessing => 'Već se obrađuje. Pokušajte ponovo za trenutak.';
+
+  @override
+  String heldRecordingProcessBefore(String date) {
+    return 'Obradite prije $date';
+  }
 }

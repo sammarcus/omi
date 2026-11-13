@@ -15484,4 +15484,18 @@ class AppLocalizationsTe extends AppLocalizations {
 
   @override
   String get firmwareVerifyingInstallation => 'Confirming installation… This may take up to 3 minutes.';
+
+  @override
+  String get syncStatusHeld => 'తర్వాత ట్రాన్స్‌క్రైబ్ కోసం ఆపి ఉంచబడింది';
+
+  @override
+  String get syncDetailsHeldOnPhone => 'ఈ ఫోన్‌లో మీ కోసం ఆపి ఉంచబడింది';
+
+  @override
+  String get recordingAlreadyProcessing => 'ఇప్పటికే ప్రాసెస్ అవుతోంది. కొద్దిసేపటి తర్వాత మళ్లీ ప్రయత్నించండి.';
+
+  @override
+  String heldRecordingProcessBefore(String date) {
+    return '$date లోపు ప్రాసెస్ చేయండి';
+  }
 }

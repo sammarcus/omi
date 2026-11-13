@@ -15456,4 +15456,18 @@ class AppLocalizationsLv extends AppLocalizations {
 
   @override
   String get firmwareVerifyingInstallation => 'Confirming installation… This may take up to 3 minutes.';
+
+  @override
+  String get syncStatusHeld => 'Aizturēts vēlākai transkribēšanai';
+
+  @override
+  String get syncDetailsHeldOnPhone => 'Aizturēts jums šajā tālrunī';
+
+  @override
+  String get recordingAlreadyProcessing => 'Jau tiek apstrādāts. Mēģiniet vēlreiz pēc brīža.';
+
+  @override
+  String heldRecordingProcessBefore(String date) {
+    return 'Apstrādājiet līdz $date';
+  }
 }

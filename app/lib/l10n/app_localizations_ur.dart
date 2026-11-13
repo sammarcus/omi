@@ -15433,4 +15433,18 @@ class AppLocalizationsUr extends AppLocalizations {
 
   @override
   String get firmwareVerifyingInstallation => 'Confirming installation… This may take up to 3 minutes.';
+
+  @override
+  String get syncStatusHeld => 'بعد میں ٹرانسکرائب کے لیے روکا گیا';
+
+  @override
+  String get syncDetailsHeldOnPhone => 'اس فون پر آپ کے لیے روکا گیا';
+
+  @override
+  String get recordingAlreadyProcessing => 'پہلے سے پراسیس ہو رہا ہے۔ تھوڑی دیر بعد دوبارہ کوشش کریں۔';
+
+  @override
+  String heldRecordingProcessBefore(String date) {
+    return '$date سے پہلے پراسیس کریں';
+  }
 }

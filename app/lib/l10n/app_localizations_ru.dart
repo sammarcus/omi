@@ -15471,4 +15471,18 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get firmwareVerifyingInstallation => 'Confirming installation… This may take up to 3 minutes.';
+
+  @override
+  String get syncStatusHeld => 'Отложено для «Расшифровать позже»';
+
+  @override
+  String get syncDetailsHeldOnPhone => 'Отложено для вас на этом телефоне';
+
+  @override
+  String get recordingAlreadyProcessing => 'Уже обрабатывается. Попробуйте чуть позже.';
+
+  @override
+  String heldRecordingProcessBefore(String date) {
+    return 'Обработайте до $date';
+  }
 }

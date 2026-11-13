@@ -15543,4 +15543,18 @@ class AppLocalizationsTl extends AppLocalizations {
 
   @override
   String get firmwareVerifyingInstallation => 'Confirming installation… This may take up to 3 minutes.';
+
+  @override
+  String get syncStatusHeld => 'Nakahold para sa Transcribe Later';
+
+  @override
+  String get syncDetailsHeldOnPhone => 'Nakahold para sa iyo sa phone na ito';
+
+  @override
+  String get recordingAlreadyProcessing => 'Pinoproseso na. Subukang muli sa ilang sandali.';
+
+  @override
+  String heldRecordingProcessBefore(String date) {
+    return 'Iproseso bago ang $date';
+  }
 }

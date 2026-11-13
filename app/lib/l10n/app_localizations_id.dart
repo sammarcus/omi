@@ -15436,4 +15436,18 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get firmwareVerifyingInstallation => 'Confirming installation… This may take up to 3 minutes.';
+
+  @override
+  String get syncStatusHeld => 'Ditahan untuk Transkripsi Nanti';
+
+  @override
+  String get syncDetailsHeldOnPhone => 'Ditahan untuk Anda di ponsel ini';
+
+  @override
+  String get recordingAlreadyProcessing => 'Sedang diproses. Coba lagi sebentar lagi.';
+
+  @override
+  String heldRecordingProcessBefore(String date) {
+    return 'Proses sebelum $date';
+  }
 }

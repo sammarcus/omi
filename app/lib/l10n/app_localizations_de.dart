@@ -15535,4 +15535,18 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get firmwareVerifyingInstallation => 'Confirming installation… This may take up to 3 minutes.';
+
+  @override
+  String get syncStatusHeld => 'Für „Später transkribieren“ zurückgehalten';
+
+  @override
+  String get syncDetailsHeldOnPhone => 'Für dich auf diesem Handy zurückgehalten';
+
+  @override
+  String get recordingAlreadyProcessing => 'Wird bereits verarbeitet. Versuche es gleich noch einmal.';
+
+  @override
+  String heldRecordingProcessBefore(String date) {
+    return 'Vor dem $date verarbeiten';
+  }
 }

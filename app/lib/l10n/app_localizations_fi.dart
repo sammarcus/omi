@@ -15426,4 +15426,18 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get firmwareVerifyingInstallation => 'Confirming installation… This may take up to 3 minutes.';
+
+  @override
+  String get syncStatusHeld => 'Pidossa myöhempää litterointia varten';
+
+  @override
+  String get syncDetailsHeldOnPhone => 'Pidossa sinulle tässä puhelimessa';
+
+  @override
+  String get recordingAlreadyProcessing => 'Käsitellään jo. Yritä hetken päästä uudelleen.';
+
+  @override
+  String heldRecordingProcessBefore(String date) {
+    return 'Käsittele ennen $date';
+  }
 }

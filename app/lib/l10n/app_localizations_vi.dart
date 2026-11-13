@@ -15423,4 +15423,18 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get firmwareVerifyingInstallation => 'Confirming installation… This may take up to 3 minutes.';
+
+  @override
+  String get syncStatusHeld => 'Đang giữ để chép lời sau';
+
+  @override
+  String get syncDetailsHeldOnPhone => 'Đang giữ cho bạn trên điện thoại này';
+
+  @override
+  String get recordingAlreadyProcessing => 'Đang được xử lý. Hãy thử lại sau giây lát.';
+
+  @override
+  String heldRecordingProcessBefore(String date) {
+    return 'Xử lý trước $date';
+  }
 }

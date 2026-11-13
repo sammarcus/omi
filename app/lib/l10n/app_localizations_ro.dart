@@ -15486,4 +15486,18 @@ class AppLocalizationsRo extends AppLocalizations {
 
   @override
   String get firmwareVerifyingInstallation => 'Confirming installation… This may take up to 3 minutes.';
+
+  @override
+  String get syncStatusHeld => 'Reținută pentru transcriere ulterioară';
+
+  @override
+  String get syncDetailsHeldOnPhone => 'Reținut pentru tine pe acest telefon';
+
+  @override
+  String get recordingAlreadyProcessing => 'Se procesează deja. Încearcă din nou peste un moment.';
+
+  @override
+  String heldRecordingProcessBefore(String date) {
+    return 'Procesează înainte de $date';
+  }
 }

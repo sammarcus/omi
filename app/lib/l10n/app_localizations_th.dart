@@ -15347,4 +15347,18 @@ class AppLocalizationsTh extends AppLocalizations {
 
   @override
   String get firmwareVerifyingInstallation => 'Confirming installation… This may take up to 3 minutes.';
+
+  @override
+  String get syncStatusHeld => 'พักไว้สำหรับถอดความภายหลัง';
+
+  @override
+  String get syncDetailsHeldOnPhone => 'พักไว้ให้คุณในโทรศัพท์เครื่องนี้';
+
+  @override
+  String get recordingAlreadyProcessing => 'กำลังประมวลผลอยู่แล้ว ลองอีกครั้งในอีกสักครู่';
+
+  @override
+  String heldRecordingProcessBefore(String date) {
+    return 'ประมวลผลก่อน $date';
+  }
 }

@@ -15201,4 +15201,18 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get firmwareVerifyingInstallation => 'Confirming installation… This may take up to 3 minutes.';
+
+  @override
+  String get syncStatusHeld => '나중에 전사하기로 보류됨';
+
+  @override
+  String get syncDetailsHeldOnPhone => '이 휴대폰에 보류됨';
+
+  @override
+  String get recordingAlreadyProcessing => '이미 처리 중입니다. 잠시 후 다시 시도하세요.';
+
+  @override
+  String heldRecordingProcessBefore(String date) {
+    return '$date 전에 처리하세요';
+  }
 }

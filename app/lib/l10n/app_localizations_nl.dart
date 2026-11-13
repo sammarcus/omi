@@ -15460,4 +15460,18 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get firmwareVerifyingInstallation => 'Confirming installation… This may take up to 3 minutes.';
+
+  @override
+  String get syncStatusHeld => 'Vastgehouden voor Later transcriberen';
+
+  @override
+  String get syncDetailsHeldOnPhone => 'Voor jou vastgehouden op deze telefoon';
+
+  @override
+  String get recordingAlreadyProcessing => 'Wordt al verwerkt. Probeer het zo opnieuw.';
+
+  @override
+  String heldRecordingProcessBefore(String date) {
+    return 'Verwerk vóór $date';
+  }
 }

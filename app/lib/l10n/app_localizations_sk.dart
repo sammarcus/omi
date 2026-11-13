@@ -15417,4 +15417,18 @@ class AppLocalizationsSk extends AppLocalizations {
 
   @override
   String get firmwareVerifyingInstallation => 'Confirming installation… This may take up to 3 minutes.';
+
+  @override
+  String get syncStatusHeld => 'Podržané na neskorší prepis';
+
+  @override
+  String get syncDetailsHeldOnPhone => 'Podržané pre vás v tomto telefóne';
+
+  @override
+  String get recordingAlreadyProcessing => 'Už sa spracúva. Skúste to znova o chvíľu.';
+
+  @override
+  String heldRecordingProcessBefore(String date) {
+    return 'Spracujte do $date';
+  }
 }

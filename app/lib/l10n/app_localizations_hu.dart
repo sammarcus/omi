@@ -15480,4 +15480,18 @@ class AppLocalizationsHu extends AppLocalizations {
 
   @override
   String get firmwareVerifyingInstallation => 'Confirming installation… This may take up to 3 minutes.';
+
+  @override
+  String get syncStatusHeld => 'Visszatartva későbbi átíráshoz';
+
+  @override
+  String get syncDetailsHeldOnPhone => 'Visszatartva neked ezen a telefonon';
+
+  @override
+  String get recordingAlreadyProcessing => 'Már feldolgozás alatt. Próbáld újra egy pillanat múlva.';
+
+  @override
+  String heldRecordingProcessBefore(String date) {
+    return 'Dolgozd fel eddig: $date';
+  }
 }

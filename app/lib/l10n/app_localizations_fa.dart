@@ -15415,4 +15415,18 @@ class AppLocalizationsFa extends AppLocalizations {
 
   @override
   String get firmwareVerifyingInstallation => 'Confirming installation… This may take up to 3 minutes.';
+
+  @override
+  String get syncStatusHeld => 'نگه‌داشته‌شده برای رونویسی بعدی';
+
+  @override
+  String get syncDetailsHeldOnPhone => 'برای شما روی این گوشی نگه‌داشته شده';
+
+  @override
+  String get recordingAlreadyProcessing => 'در حال پردازش است. لحظه‌ای دیگر دوباره امتحان کنید.';
+
+  @override
+  String heldRecordingProcessBefore(String date) {
+    return 'قبل از $date پردازش کنید';
+  }
 }

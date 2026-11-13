@@ -12202,5 +12202,9 @@
     "firmwareUpdateNotInstalledMessage": "The update didn't install. Your pendant is still on {version}. Please try again.",
     "firmwareUpdateUnconfirmedMessage": "Couldn't confirm the update. Your pendant hasn't reconnected yet. Keep it nearby and check its firmware version before trying again.",
     "firmwareUpdateUnconfirmedTitle": "Update Not Confirmed",
-    "firmwareVerifyingInstallation": "Confirming installation… This may take up to 3 minutes."
+    "firmwareVerifyingInstallation": "Confirming installation… This may take up to 3 minutes.",
+    "syncStatusHeld": "తర్వాత ట్రాన్స్‌క్రైబ్ కోసం ఆపి ఉంచబడింది",
+    "syncDetailsHeldOnPhone": "ఈ ఫోన్‌లో మీ కోసం ఆపి ఉంచబడింది",
+    "recordingAlreadyProcessing": "ఇప్పటికే ప్రాసెస్ అవుతోంది. కొద్దిసేపటి తర్వాత మళ్లీ ప్రయత్నించండి.",
+    "heldRecordingProcessBefore": "{date} లోపు ప్రాసెస్ చేయండి"
 }

@@ -15333,4 +15333,18 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get firmwareVerifyingInstallation => 'Confirming installation… This may take up to 3 minutes.';
+
+  @override
+  String get syncStatusHeld => 'محفوظ للنسخ لاحقًا';
+
+  @override
+  String get syncDetailsHeldOnPhone => 'محفوظ لك على هذا الهاتف';
+
+  @override
+  String get recordingAlreadyProcessing => 'قيد المعالجة بالفعل. حاول مرة أخرى بعد قليل.';
+
+  @override
+  String heldRecordingProcessBefore(String date) {
+    return 'عالجه قبل $date';
+  }
 }

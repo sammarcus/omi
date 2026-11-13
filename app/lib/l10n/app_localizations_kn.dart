@@ -15472,4 +15472,18 @@ class AppLocalizationsKn extends AppLocalizations {
 
   @override
   String get firmwareVerifyingInstallation => 'Confirming installation… This may take up to 3 minutes.';
+
+  @override
+  String get syncStatusHeld => 'ನಂತರ ಲಿಪ್ಯಂತರಕ್ಕಾಗಿ ಇರಿಸಲಾಗಿದೆ';
+
+  @override
+  String get syncDetailsHeldOnPhone => 'ಈ ಫೋನ್‌ನಲ್ಲಿ ನಿಮಗಾಗಿ ಇರಿಸಲಾಗಿದೆ';
+
+  @override
+  String get recordingAlreadyProcessing => 'ಈಗಾಗಲೇ ಪ್ರಕ್ರಿಯೆಯಲ್ಲಿದೆ. ಸ್ವಲ್ಪ ಸಮಯದ ನಂತರ ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.';
+
+  @override
+  String heldRecordingProcessBefore(String date) {
+    return '$date ಒಳಗೆ ಪ್ರಕ್ರಿಯೆಗೊಳಿಸಿ';
+  }
 }

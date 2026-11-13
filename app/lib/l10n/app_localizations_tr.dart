@@ -15433,4 +15433,18 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get firmwareVerifyingInstallation => 'Confirming installation… This may take up to 3 minutes.';
+
+  @override
+  String get syncStatusHeld => 'Sonra Yazıya Dök için bekletiliyor';
+
+  @override
+  String get syncDetailsHeldOnPhone => 'Bu telefonda senin için bekletiliyor';
+
+  @override
+  String get recordingAlreadyProcessing => 'Zaten işleniyor. Birazdan tekrar dene.';
+
+  @override
+  String heldRecordingProcessBefore(String date) {
+    return '$date tarihinden önce işle';
+  }
 }

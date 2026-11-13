@@ -15421,4 +15421,18 @@ class AppLocalizationsCs extends AppLocalizations {
 
   @override
   String get firmwareVerifyingInstallation => 'Confirming installation… This may take up to 3 minutes.';
+
+  @override
+  String get syncStatusHeld => 'Podrženo pro pozdější přepis';
+
+  @override
+  String get syncDetailsHeldOnPhone => 'Podrženo pro vás v tomto telefonu';
+
+  @override
+  String get recordingAlreadyProcessing => 'Už se zpracovává. Zkuste to znovu za chvíli.';
+
+  @override
+  String heldRecordingProcessBefore(String date) {
+    return 'Zpracujte do $date';
+  }
 }

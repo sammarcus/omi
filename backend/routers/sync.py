@@ -640,6 +640,14 @@ async def sync_local_files_v2(
     audio_start_seconds: Optional[float] = Query(None),
     audio_end_seconds: Optional[float] = Query(None),
     repair_job_id: Optional[str] = Query(None, description='Original batch job for an exact custody repair bundle'),
+    explicit_user_request: bool = Query(
+        False,
+        description=(
+            'The user explicitly asked to process this recording (Process now on a held Transcribe Later '
+            'recording). Not automatic recovery, so the automatic-recovery lookback does not refuse it; '
+            'it still takes the backfill lane and fair-use budget.'
+        ),
+    ),
     x_app_platform: Optional[str] = Header(None, alias='X-App-Platform'),
     x_device_id_hash: Optional[str] = Header(None, alias='X-Device-Id-Hash'),
     x_app_version: Optional[str] = Header(None, alias='X-App-Version'),
@@ -786,7 +794,17 @@ async def sync_local_files_v2(
                 'detail': 'Historical recovery is paused; local audio was not consumed',
             },
         )
-    if not lane_decision.automatic_recovery_allowed and repair_identity is None:
+    explicit_past_lookback = (
+        not lane_decision.automatic_recovery_allowed and repair_identity is None and explicit_user_request is True
+    )
+    if explicit_past_lookback:
+        logger.info(
+            'sync_lane_admission_explicit uid=%s age_seconds=%s reason=%s',
+            uid,
+            lane_decision.maximum_age_seconds,
+            lane_decision.reason,
+        )
+    if not lane_decision.automatic_recovery_allowed and repair_identity is None and not explicit_past_lookback:
         return JSONResponse(
             status_code=422,
             content={
